@@ -1,0 +1,61 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Righteous&display=swap');
+/* .righteous-regular {
+    font-family: "Righteous", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  } */
+
+:root {
+    --colour-spaceship-red: #E43020;
+    --colour-deepspace: #1F282D;
+    --colour-whiteStar: #F7FDFF;
+    --text-size: 64px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--colour-deepspace);
+    font-family: "Righteous", sans-serif;
+    font-size: var(--text-size);
+    letter-spacing: 0.4rem; 
+}
+
+h1, h2, h3, h4, h5 {
+    color: var(--colour-whiteStar);
+}
+
+#main-word-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20vh;
+    gap: 6rem;
+}
+
+#space-ship-A {
+    position: absolute;
+    transform: translate(calc(50vw - var(--text-size)), calc(var(--text-size) * -1.5));
+}
+#space-ship-A svg {
+    animation: cruising 0.2s linear infinite;
+    height: calc(var(--text-size) * 1.2);
+    fill: var(--colour-whiteStar);
+}
+
+@keyframes cruising {
+    0% {
+        transform: translate(-1px);
+    }
+    50% {
+        transform: translate(1px);
+    }
+    100% {
+        transform: translate(-1px);
+    }
+}
