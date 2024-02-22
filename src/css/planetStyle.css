@@ -29,6 +29,7 @@ body {
     letter-spacing: 0.4rem; 
     height: 100vh;
     overflow: hidden;
+
 }
 
 h1, h2, h3, h4, h5 {
@@ -44,7 +45,6 @@ h1, h2, h3, h4, h5 {
     transform: translate(0, -20vh);
     margin-left: var(--text-size);
     gap: 6rem;
-    animation: movein var(--flight-timing) ease-in-out infinite 2s;
 }
 
 .planet {
@@ -55,11 +55,9 @@ h1, h2, h3, h4, h5 {
     /* bottom: 0; */
     margin-top: 70vh;
 } 
-.planet img {
-    background-color: forestgreen;
-    border-radius: 50%;
-    height: 80vw;
-    width: 80vw;
+.planet svg {
+    height: 40vw;
+    width: 40vw;
 }
 
 #space-ship-A {
@@ -92,10 +90,10 @@ h1, h2, h3, h4, h5 {
 
 /* animation classes */
 /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-
-.animated-liftoff {
-    animation: liftoff 300ms linear;
+.paused {
+    animation-play-state: paused;
 }
+
 .animated-cruising {
     animation: 
         liftoff 300ms linear 1.5s,
