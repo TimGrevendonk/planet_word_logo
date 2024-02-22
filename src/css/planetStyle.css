@@ -53,7 +53,7 @@ h1, h2, h3, h4, h5 {
     flex-direction: row;
     justify-content: center;
     /* bottom: 0; */
-    margin-top: 70vh;
+    margin-top: calc(var(--liftoff-height) - var(--text-size));
 } 
 .planet svg {
     height: 40vw;

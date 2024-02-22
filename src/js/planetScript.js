@@ -4,7 +4,7 @@ const body = document.querySelector('body');
 const animations = document.querySelectorAll('[data-animation');
 
 const canvasSize = body.offsetHeight * body.offsetWidth;
-const starsFraction = Math.ceil(canvasSize / 2000);
+const starsFraction = Math.ceil(canvasSize / 3000);
 
 (function addStars() { 
     for(let i = 0; i < starsFraction; i++) {
@@ -42,7 +42,7 @@ function toggleAnimations(animations) {
     })
 }
 
-
+// Toggle animations after loop
 setInterval(
     function(){
         toggleAnimations(animations)
@@ -51,3 +51,4 @@ setInterval(
         }, 2000);
     },14000
 );
+
