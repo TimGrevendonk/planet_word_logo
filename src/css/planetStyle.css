@@ -13,6 +13,7 @@
     --text-size: 64px;
     --liftoff-height: 75vh;
     --top-offset: 20vh;
+    --flight-timing: 12000ms;
 }
 
 * {
@@ -41,8 +42,9 @@ h1, h2, h3, h4, h5 {
     justify-content: center;
     top: 0;
     transform: translate(0, -20vh);
+    margin-left: var(--text-size);
     gap: 6rem;
-    animation: movein 12000ms ease-in-out infinite;
+    animation: movein var(--flight-timing) ease-in-out infinite 2s;
 }
 
 .planet {
@@ -52,7 +54,6 @@ h1, h2, h3, h4, h5 {
     justify-content: center;
     /* bottom: 0; */
     margin-top: 70vh;
-    animation: movein 12000ms ease-in-out infinite;
 } 
 .planet img {
     background-color: forestgreen;
@@ -64,16 +65,30 @@ h1, h2, h3, h4, h5 {
 #space-ship-A {
     z-index: 20;
     position: absolute;
-    /* transform: translate(calc(50vw - var(--text-size)), calc(var(--text-size) * -1.5)); */
+    width: var(--text-size);
     top: 0;
     transform: translate(calc(50vw - var(--text-size) / 2 ), var(--liftoff-height));
+}
+#space-ship-A > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#afterburn {
+    width: var(--text-size);
+    transform-origin: top;
+    transform: rotateX(90deg);
 }
 #space-ship-A svg {
     /* animation: cruising 200ms linear infinite;    */
     height: calc(var(--text-size) * 1.2);
-    fill: var(--colour-whiteStar);
-    
+    fill: var(--colour-whiteStar); 
 }
+
+.red {
+    background-color: red;
+} 
 
 /* animation classes */
 /* animation: name duration timing-function delay iteration-count direction fill-mode; */
@@ -82,10 +97,18 @@ h1, h2, h3, h4, h5 {
     animation: liftoff 300ms linear;
 }
 .animated-cruising {
-    animation: cruising 200ms linear infinite,
+    animation: 
+        liftoff 300ms linear 1.5s,
+        cruising 200ms linear infinite 2s;       
 }
 .animated-flight {
-    animation: flight 12000ms ease-in-out infinite;   
+    animation: flight var(--flight-timing) ease-in-out infinite 2s;   
+}
+.animated-move {
+    animation: movein var(--flight-timing) ease-in-out infinite 2s;
+}
+.animated-afterburn {
+    animation: afterburn var(--flight-timing) linear infinite 2s;
 }
 
 @keyframes movein {
@@ -94,19 +117,26 @@ h1, h2, h3, h4, h5 {
     }
 }
 
- /*TODO fix the cruising shaking  */
+ /*TODO fix the cruising shaking per animation loop */
 @keyframes cruising {
-    0% {
-        margin-left: 1px;
+    25% {
+        transform: translate(-2.5px);
     }
-    50% {
-        margin-right: -1px;    
-    }
-    100% {
-        margin-left: 1px;
+    75% {
+        transform: translate(2.5px);
     }
 }
-/* 
+@keyframes afterburn {
+    25% {
+        transform: 
+            rotateX(0deg);
+    }
+    50% {
+        transform: 
+            rotateX(30deg);
+    }
+}
+
 @keyframes liftoff {
     0%, 50% {
         transform: translateX(-3px);
@@ -115,18 +145,18 @@ h1, h2, h3, h4, h5 {
         transform: translateX(3px);
     }   
 }
-*/
+
 
 @keyframes flight {
     20%, 70% {
         transform: translate(0, calc(var(--liftoff-height) * -1 + var(--top-offset) + calc(var(--text-size) / 2.8))); 
-        rotate: -4deg;
+        rotate: 1.5deg;
     }
     45% {
-        rotate: -3deg;
+        rotate: -1.5deg;
     }
     55% {
-        rotate: -4deg;
+        rotate: 1.5deg;
     }
 
 } 
